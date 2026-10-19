@@ -68,7 +68,7 @@ void MPU6050_Initialization(void)
 	//Sample rate divider
 	/*Sample Rate = Gyroscope Output Rate / (1 + SMPRT_DIV) */
 	//	MPU6050_Writebyte(MPU6050_SMPRT_DIV, 0x00); // ACC output rate is 1kHz, GYRO output rate is 8kHz
-	MPU6050_Writebyte(MPU6050_SMPRT_DIV, 2); // Sample Rate = 200Hz
+	MPU6050_Writebyte(MPU6050_SMPRT_DIV, 9); // Sample Rate = 200Hz
 	HAL_Delay(50);
 
 	//FSYNC and DLPF setting
