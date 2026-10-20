@@ -124,11 +124,13 @@ void MPU6050_Get6AxisRawData(Struct_MPU6050* mpu6050)
 	mpu6050->acc_y_raw = (data[2] << 8) | data[3];
 	mpu6050->acc_z_raw = (data[4] << 8) | data[5];
 
+/*
 	mpu6050->temperature_raw = (data[6] << 8) | data[7];
 
 	mpu6050->gyro_x_raw = ((data[8] << 8) | data[9]);
 	mpu6050->gyro_y_raw = ((data[10] << 8) | data[11]);
 	mpu6050->gyro_z_raw = ((data[12] << 8) | data[13]);
+*/
 }
 
 void MPU6050_Get_LSB_Sensitivity(uint8_t FS_SCALE_GYRO, uint8_t FS_SCALE_ACC)
@@ -169,9 +171,9 @@ void MPU6050_Get_LSB_Sensitivity(uint8_t FS_SCALE_GYRO, uint8_t FS_SCALE_ACC)
 void MPU6050_DataConvert(Struct_MPU6050* mpu6050)
 {
 	//printf("LSB_Sensitivity_GYRO: %f, LSB_Sensitivity_ACC: %f\n",LSB_Sensitivity_GYRO,LSB_Sensitivity_ACC);
-	mpu6050->acc_x = mpu6050->acc_x_raw / LSB_Sensitivity_ACC;
-	mpu6050->acc_y = mpu6050->acc_y_raw / LSB_Sensitivity_ACC;
-	mpu6050->acc_z = mpu6050->acc_z_raw / LSB_Sensitivity_ACC;
+	mpu6050->acc_x = (mpu6050->acc_x_raw / LSB_Sensitivity_ACC) * 980.665f;
+	mpu6050->acc_y = (mpu6050->acc_y_raw / LSB_Sensitivity_ACC) * 980.665f;
+	mpu6050->acc_z = (mpu6050->acc_z_raw / LSB_Sensitivity_ACC) * 980.665f;
 
 /*
 	mpu6050->temperature = (float)(mpu6050->temperature_raw)/340+36.53;
