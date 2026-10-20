@@ -20,7 +20,7 @@ UART_HandleTypeDef huart1;
 I2C_HandleTypeDef hi2c1;
 
 #define TEST_LENGTH_SAMPLES  1
-#define NUM_STAGES           2  // 2次フィルターの段数（バイカッド数）
+#define NUM_STAGES           6  // 2次フィルターの段数（バイカッド数）
 
 // Biquadのインスタンスと状態変数
 arm_biquad_casd_df1_inst_f32 SX, SY, SZ;
