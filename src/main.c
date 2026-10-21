@@ -252,7 +252,7 @@ int main(void)
 	if (shindo > max)
  		max = shindo;
 	if (spos == 0) {
-          if (max > 1.0f) {
+          if (max > 0.8f) {
             sprintf(txBuff,"%f\n", max);
             HAL_UART_Transmit(&huart1, txBuff, strlen((char *)txBuff), 0xFFFF);
           }
