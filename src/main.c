@@ -1,5 +1,5 @@
 /*
- * CMSIS DSP Library and Example Code 
+ * Seismic Intensity Meter for STM32F303
  */
 
 #include <stdio.h>
@@ -19,7 +19,6 @@
 UART_HandleTypeDef huart1;
 I2C_HandleTypeDef hi2c1;
 
-#define TEST_LENGTH_SAMPLES  1
 #define NUM_STAGES           6  // 2次フィルターの段数（バイカッド数）
 
 // Biquadのインスタンスと状態変数
@@ -136,7 +135,7 @@ void STM32_Biquad_Init(void) {
 
 float32_t STM32_Biquad_Process(arm_biquad_casd_df1_inst_f32 S, float32_t input_val) {
     float32_t output_val = 0.0f;
-    arm_biquad_cascade_df1_f32(&S, &input_val, &output_val, TEST_LENGTH_SAMPLES);
+    arm_biquad_cascade_df1_f32(&S, &input_val, &output_val, 1);
     return output_val;
 }
 
