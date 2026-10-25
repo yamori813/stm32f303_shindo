@@ -56,13 +56,16 @@ void MPU6050_Initialization(void)
 	}
 
 	//Reset the whole module before initialization
-	MPU6050_Writebyte(MPU6050_PWR_MGMT_1, 0x1<<7);
+	MPU6050_Writebyte(MPU6050_PWR_MGMT_1, DEVICE_RESET);
 	HAL_Delay(100);
 
 	//Power Management setting
 	/* Default is sleep mode
 	 * necessary to wake up MPU6050*/
-	MPU6050_Writebyte(MPU6050_PWR_MGMT_1, SLEEP_OFF);
+	MPU6050_Writebyte(MPU6050_PWR_MGMT_1, SLEEP_OFF | TEMP_DIS);
+	HAL_Delay(50);
+
+	MPU6050_Writebyte(MPU6050_PWR_MGMT_2, GYRO_DIS);
 	HAL_Delay(50);
 
 	//Sample rate divider
